@@ -1,12 +1,11 @@
 package com.gradescope.airportinfo;
 
-/* 
-Fatih Bozdogan
-CSC210
-PA-2
-This program processes flight data to perform various tasks such as the maximum number 
-of flights, the departures from one location to another, and cutoff limit of total 
-number of flights for each airport.
+/**
+ * File: AirportInfo.java
+ * Author: Fatih Bozdogan
+ * Description: This program processes flight data to perform various tasks 
+ * such as the maximum number of flights, the departures from one location to 
+ * another, and cutoff limit of total number of flights for each airport.
  */
 
 import java.io.File;
@@ -17,6 +16,11 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 public class AirportInfo {
+    /**
+     * builds the hashmap of destinations an airport flies to
+     * @param file name
+     * @return destinations
+     */
 	public static HashMap<String, String> getDestinations(String fileName) throws FileNotFoundException { 
 		HashMap<String, String> destinations = new HashMap<>();
 		
@@ -38,14 +42,19 @@ public class AirportInfo {
 				destinations.put(sourceAirport, destinationAirport);
 			}
 			else {
-				destinations.put(sourceAirport, destinations.get(sourceAirport) + " " + destinationAirport);
+				destinations.put(sourceAirport, 
+						destinations.get(sourceAirport) + " " + destinationAirport);
 			}
 		}
 		
 	reader.close();
 	return destinations;
 	}
-		
+    /**
+     * builds a hashmap of airports and the total number of flights it has
+     * @param file name
+     * @return airportCount
+     */
 	public static HashMap<String, Integer> getAirportCount(String fileName) throws FileNotFoundException {
 		
 		HashMap<String, Integer> airportCount = new HashMap<>();
@@ -78,6 +87,11 @@ public class AirportInfo {
 	return airportCount;
 	}
 	
+    /**
+     * gets the airport with the maximum total number of flights
+     * @param airportCount, the hashmap of airports and the total number of flights it has
+     * @return a properly formatted string of maximum total number of flights
+     */
 	public static String getMax(HashMap<String, Integer> airportCount) {
 		
 		// sort the keys to print them alphabetically
@@ -99,7 +113,12 @@ public class AirportInfo {
 		}		
 	    return "MAX FLIGHTS " + maxCount + " : " + res;
 	}
-	
+    /**
+     * gets the departures from one destination to another
+     * @param destinations, a hashmap of airports and their destinations
+     * @return res,a properly formatted string alphabetically listing all 
+     * destinations an airport flies to
+     */
 	public static String getDepartures(HashMap<String, String> destinations) {
 		
 		// sort the keys to print them alphabetically 
@@ -114,12 +133,20 @@ public class AirportInfo {
 		}
 	    return res;
 	}
+	
+    /**
+     * Cuts off airports below the cutOff the user enters
+     * @param cutOff, the total number of flights the airport must have to not be cutOff
+     * airportCount, the hashmap of airports and the total number of flights they have
+     * @return destinations
+     */
 	public static String getLimits(int cutOff, HashMap<String, Integer> airportCount) {
 		ArrayList<String> sortedKeys = new ArrayList<String>(airportCount.keySet());
 	    Collections.sort(sortedKeys);
 	    
 	    String res = "";
 	    for (String key : sortedKeys) {
+	    	// adds airports and their total number of flights that meet the cutoff number to the result
 	    	if (airportCount.get(key) > cutOff) {
 	    		res += key + " - " + airportCount.get(key) + "\n";
 	    	}
@@ -149,6 +176,3 @@ public class AirportInfo {
     }
 }
 
-/* ASK ADRIANA IF YOU SHOULD ADD MULTILINE COMMENTS AFTER EACH CLASS: EX. param: ___ returns: ___
-	code clean up to do:
-	*/
