@@ -1,4 +1,4 @@
-// package com.gradescope.airportinfo;
+package com.gradescope.airportinfo;
 //package week4;
 
 import java.io.File;
@@ -29,7 +29,7 @@ public class AirportInfo {
 				destinations.put(sourceAirport, destinationAirport);
 			}
 			else {
-				destinations.put(sourceAirport, destinations.get(sourceAirport) + ", " + destinationAirport);
+				destinations.put(sourceAirport, destinations.get(sourceAirport) + " " + destinationAirport);
 			}
 		}
 		
@@ -134,3 +134,35 @@ public class AirportInfo {
     
     }
 }
+
+/* ASK ADRIANA IF YOU SHOULD ADD MULTILINE COMMENTS AFTER EACH CLASS: EX. param: ___ returns: ___
+	code clean up to do:
+	
+	Decomposition
+
+Should carefully select data structures that implement the required functionality. For example, if you avoid using HashMaps, it will probably result in more complicated code and thus points off.
+Should just use static methods.
+Use a single file. This should be a small program (<300 lines).
+Each static method should be less than 30 lines. This INCLUDES comments. It is easier to read a function if it can all fit on one screen.
+Make things as simple as possible.
+Avoid nested loops.
+Avoid nesting conditionals.
+Avoid chaining, i.e., too many levels of user-defined methods calling other user-defined methods. Putting most of the functionality in another static method that returns void that main calls is an example of this.
+Code Clarity
+
+YOU should be able to read, understand, and explain your own code to someone else a couple days after you wrote it.
+
+There needs to be a balance between no comments and a comment for every line in the program. Either extreme will result in points off.
+
+The file header should include instructions on how someone would use this program. To use the program, one would need to know the input file format.
+
+Use meaningful variable names. Loop iterators can be simple (i for integers, s for strings, n for numbers, etc.).
+
+The clearest code examples will be anonymously shown in class.
+
+The most obfuscated code examples will be anonymously shown in class with suggestions for improvement.
+
+The coding style in terms of spacing, etc. should be done automatically every time you save in Eclipse. As long as you stick with those defaults, the syntax style should be fine.
+
+Write your own code. We will be using a tool that finds overly similar code. I recommend that when talking with others about the assignment, do not write anything down.
+*/
