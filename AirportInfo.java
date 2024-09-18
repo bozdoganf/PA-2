@@ -101,8 +101,8 @@ public class AirportInfo {
 	    return res;
 	}
 	public static String getLimits(int cutOff, HashMap<String, Integer> airportCount) {
-		ArrayList<String> sortedKeys = new ArrayList<String>(airportCount.keySet());
-	    Collections.sort(sortedKeys);
+		ArrayList<String> sortedKeys = new ArrayList<String>(airportCount.keySet()); // instead of writing this for each class,  
+	    Collections.sort(sortedKeys); // find a way to write this once and/or make this more efficient
 	    
 	    String res = "";
 	    for (String key : sortedKeys) {
